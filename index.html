@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Online Clipboard</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 p-6">
+  <h1 class="text-2xl font-bold mb-4"></h1>
+
+  <div class="bg-white p-4 rounded shadow mb-4">
+    <h2 class="font-semibold mb-2">Send</h2>
+    <textarea id="textInput" 
+          oninput="clearFiles()" 
+          placeholder="Type text here..." 
+          class="border p-2 w-full mb-2"></textarea>
+    <input type="file" 
+       id="fileInput" 
+       onchange="clearText()" 
+       class="mb-2" 
+       multiple>
+
+    <button onclick="sendData()" class="bg-blue-500 text-white px-4 py-2 rounded">Generate Code</button>
+    <p id="sendResult" class="mt-2 font-mono"></p>
+  </div>
+
+  <div class="bg-white p-4 rounded shadow">
+    <h2 class="font-semibold mb-2">Receive</h2>
+    <input id="codeInput" placeholder="Enter 4-digit code" class="border p-2 w-full mb-2">
+    <button onclick="receiveData()" class="bg-green-500 text-white px-4 py-2 rounded">Fetch</button>
+    <div id="receiveResult" class="mt-2"></div>
+  </div>
+
+  <!-- ✅ Toast Notification -->
+  <div id="toast" class="fixed bottom-5 right-5 bg-green-500 text-white px-4 py-2 rounded opacity-0 transition-opacity duration-300"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
