@@ -1,7 +1,7 @@
 # ClipVault
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-[![GitHub Last Commit](https://img.shields.io/github/last-commit/YOUR_GITHUB_USERNAME/YOUR_REPOSITORY_NAME)](https://github.com/YOUR_GITHUB_USERNAME/YOUR_REPOSITORY_NAME)
+[![GitHub Last Commit](https://img.shields.io/github/last-commit/kasnk/clipvault)](https://github.com/kasnk/clipvault.git)
 
 ClipVault is a web application that allows you to securely share files and text using a simple 4-digit code. It's designed for quick, secure, and temporary sharing of sensitive information.
 
