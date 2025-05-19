@@ -1,7 +1,12 @@
 
 # ClipVault
 
+<<<<<<< HEAD
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+=======
+## License
+This project is licensed under the **Apache License 2.0** - see the [LICENSE](LICENSE) file for details.
+>>>>>>> eb7e523 (Added Apache 2.0 License)
 
 ClipVault is a web application that allows you to securely share files and text using a simple 4-digit code. It's designed for quick, secure, and temporary sharing of sensitive information.
 
@@ -103,4 +108,8 @@ This project utilizes the following dependencies:
 -   [Express.js](https://expressjs.com/)
 -   [MongoDB](https://www.mongodb.com/)
 -   [Tailwind CSS](https://tailwindcss.com/)
+<<<<<<< HEAD
 -   [Multer](https://github.com/expressjs/multer)
+=======
+-   [Multer](https://github.com/expressjs/multer)
+>>>>>>> eb7e523 (Added Apache 2.0 License)
