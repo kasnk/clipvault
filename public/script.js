@@ -1,7 +1,12 @@
 async function sendData() {
   const text = document.getElementById('textInput').value;
   const files = document.getElementById('fileInput').files;
+  const maxReceivers = document.getElementById('receiverInput').value || 1;
+  const expiryMinutes = document.getElementById('expiryInput').value || 10;
+
   const formData = new FormData();
+  formData.append('maxReceivers', maxReceivers);
+  formData.append('expiryMinutes', expiryMinutes);
 
   if (files.length > 0) {
     for (let i = 0; i < files.length; i++) {
@@ -27,12 +32,8 @@ async function sendData() {
   xhr.onload = function () {
     if (xhr.status === 200) {
       const data = JSON.parse(xhr.responseText);
-      if (data.code) {
-        document.getElementById('sendResult').innerText = `Code: ${data.code}`;
-        showToast(`✅ Sent Successfully! Code: ${data.code}`);
-      } else {
-        document.getElementById('sendResult').innerText = 'Error sending data.';
-      }
+      document.getElementById('sendResult').innerText = `Code: ${data.code}`;
+      showToast(`✅ Sent Successfully! Code: ${data.code}`);
     } else {
       document.getElementById('sendResult').innerText = 'Server error.';
     }
@@ -50,14 +51,31 @@ async function receiveData() {
   const res = await fetch(`/api/receive/${code}`);
   const data = await res.json();
 
-  if (data.type === 'text') {
-    document.getElementById('receiveResult').innerText = data.content;
-  } else if (data.type === 'file') {
-    let fileLinks = data.files.map(file => 
-      `<a href="${file.url}" download class="text-blue-500">${file.filename}</a>`).join('<br>');
-    document.getElementById('receiveResult').innerHTML = fileLinks;
-  } else {
-    document.getElementById('receiveResult').innerText = data.error || 'Invalid code.';
+  const receiveResult = document.getElementById('receiveResult');
+  const textBlock = document.getElementById('textBlock');
+  const filesBlock = document.getElementById('filesBlock');
+  const fileLinks = document.getElementById('fileLinks');
+
+  textBlock.classList.add('hidden');
+  filesBlock.classList.add('hidden');
+  fileLinks.innerHTML = "";
+
+  if (data.error === 'Code expired') {
+    receiveResult.innerText = "Code expired!";
+    return;
+  }
+
+  receiveResult.innerText = ""; // Clear any error messages if successful
+
+  if (data.text) {
+    textBlock.innerText = data.text;
+    textBlock.classList.remove('hidden');
+  }
+
+  if (data.files && data.files.length > 0) {
+    fileLinks.innerHTML = data.files.map(file =>
+      `<a href="${file.url}" download class="text-blue-500 block">${file.filename}</a>`).join('');
+    filesBlock.classList.remove('hidden');
   }
 }
 
@@ -73,10 +91,4 @@ function showToast(message) {
   }, 3000);
 }
 
-function clearText() {
-  document.getElementById('textInput').value = '';  // Clears text area
-}
 
-function clearFiles() {
-  document.getElementById('fileInput').value = '';  // Clears selected files
-}

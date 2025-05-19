@@ -18,63 +18,62 @@
   <div class="max-w-lg mx-auto p-6">
     <div class="flex items-center justify-between mb-6">
       <h1 class="text-3xl font-bold head">📋 ClipVault</h1>
-      
     </div>
 
     <!-- Send Section -->
     <section class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow mb-6">
       <h2 class="text-xl font-semibold mb-3">Send</h2>
-      <textarea id="textInput" oninput="clearFiles()" placeholder="Type text here..."
+      
+      <textarea id="textInput" placeholder="Type text here..."
         class="border dark:border-gray-600 bg-gray-50 dark:bg-gray-700 p-3 w-full mb-3 rounded resize-none h-32"></textarea>
-      <input type="file" id="fileInput" onchange="clearText()" class="mb-3 w-full text-sm" multiple>
+      
+      <input type="file" id="fileInput" class="mb-3 w-full text-sm" multiple>
+
+      <!-- New Input: Configure Number of Receivers -->
+      <input type="number" id="receiverInput" placeholder="Max receivers (Default: 1)" min="1"
+        class="border dark:border-gray-600 bg-gray-50 dark:bg-gray-700 p-3 w-full mb-3 rounded">
+
+      <!-- New Input: Configure Expiry -->
+      <input type="number" id="expiryInput" placeholder="Expiry (minutes, Default: 10)" min="1"
+        class="border dark:border-gray-600 bg-gray-50 dark:bg-gray-700 p-3 w-full mb-3 rounded">
+
       <button onclick="sendData()"
-        class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded transition">Generate Code</button>
+        class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded transition">Share</button>
+      
       <p id="sendResult" class="mt-3 font-mono break-all"></p>
     </section>
 
     <!-- Receive Section -->
-    <section class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow">
-      <h2 class="text-xl font-semibold mb-3">Receive</h2>
-      <input id="codeInput" placeholder="Enter 4-digit code"
-        class="border dark:border-gray-600 bg-gray-50 dark:bg-gray-700 p-3 w-full mb-3 rounded">
-      <button onclick="receiveData()"
-        class="w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded transition">Fetch</button>
-      <div id="receiveResult" class="mt-3 break-words"></div>
-    </section>
+    <!-- Receive Section -->
+  <section class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow">
+  <h2 class="text-xl font-semibold mb-3">Receive</h2>
+  <input id="codeInput" placeholder="Enter 4-digit code"
+    class="border dark:border-gray-600 bg-gray-50 dark:bg-gray-700 p-3 w-full mb-3 rounded">
+  <button onclick="receiveData()"
+    class="w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded transition">Receive</button>
+
+  <!-- Error/Response Message -->
+  <p id="receiveResult" class="mt-3 text-red-500 font-bold"></p>
+
+  <!-- Text Block -->
+  <div id="textBlock" class="mt-3 p-3 bg-gray-200 dark:bg-gray-700 rounded hidden">
+    <h3 class="text-lg font-semibold mb-2">Shared Text:</h3>
+    <p id="receivedText" class="font-mono break-all"></p>
   </div>
+
+  <!-- Files Block -->
+  <div id="filesBlock" class="mt-3 p-3 bg-gray-200 dark:bg-gray-700 rounded hidden">
+    <h3 class="text-lg font-semibold mb-2">Shared Files:</h3>
+    <div id="fileLinks"></div>
+  </div>
+  </section>
+</div>
 
   <!-- Toast Notification -->
   <div id="toast"
     class="fixed bottom-5 right-5 bg-green-500 text-white px-4 py-2 rounded opacity-0 transition-opacity duration-300"></div>
 
   <script src="script.js"></script>
-  <script>
-    // Dark/Light Mode Toggle Logic
-    const toggleButton = document.getElementById('toggleMode');
-    const html = document.documentElement;
-
-    function setTheme(theme) {
-      if (theme === 'dark') {
-        html.classList.add('dark');
-      } else {
-        html.classList.remove('dark');
-      }
-      localStorage.setItem('theme', theme);
-    }
-
-    toggleButton.addEventListener('click', () => {
-      if (html.classList.contains('dark')) {
-        setTheme('light');
-      } else {
-        setTheme('dark');
-      }
-    });
-
-    // Load saved theme on startup
-    if (localStorage.getItem('theme') === 'dark') {
-      html.classList.add('dark');
-    }
-  </script>
 </body>
 
 </html>
