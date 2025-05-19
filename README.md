@@ -93,4 +93,4 @@ We welcome contributions to ClipVault! If you'd like to contribute:
 > Please ensure your code follows the project's coding standards and includes appropriate tests.  Refer to the `CONTRIBUTING.md` file for detailed guidelines.
 
 ## License
-(https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
