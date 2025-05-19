@@ -1,8 +1,7 @@
-
 # ClipVault
 
-## License
-This project is licensed under the **Apache License 2.0** - see the [LICENSE](LICENSE) file for details.
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![GitHub Last Commit](https://img.shields.io/github/last-commit/YOUR_GITHUB_USERNAME/YOUR_REPOSITORY_NAME)](https://github.com/YOUR_GITHUB_USERNAME/YOUR_REPOSITORY_NAME)
 
 ClipVault is a web application that allows you to securely share files and text using a simple 4-digit code. It's designed for quick, secure, and temporary sharing of sensitive information.
 
@@ -16,7 +15,7 @@ ClipVault is a web application that allows you to securely share files and text 
 - [API Endpoints](#api-endpoints)
 - [Environment Variables](#environment-variables)
 - [Contributing](#contributing)
-- [License & Credits](#license--credits)
+- [License](#license)
 
 ## Project Overview
 
@@ -43,15 +42,18 @@ Make sure you have the following installed:
 
 ### Steps
 
-1.  **Clone the repository:**
+1. **Clone the repository:**
 
-    bash
-    npm install
-    1.  Open the ClipVault web application in your browser.
-2.  Enter the text or upload the file you want to share.
-3.  Configure the receiver limit and expiry time as needed.
-4.  Click the "Share" button.
-5.  A unique 4-digit code will be generated. Share this code with the intended recipient.
+   bash
+    npm start
+    ## Usage
+
+### Sending Files and Text
+
+1.  Enter the text or upload the file you want to share.
+2.  Configure the receiver limit and expiry time as needed.
+3.  Click the "Share" button.
+4.  A unique 4-digit code will be generated. Share this code with the intended recipient.
 
 ### Receiving Files and Text
 
@@ -69,19 +71,15 @@ Make sure you have the following installed:
 
 ## API Endpoints
 
-- `POST /api/send`:  Uploads files and/or text content.  Accepts `multipart/form-data` for files and `text` field for text content.
+- `POST /api/send`: Uploads files and/or text content. Accepts `multipart/form-data` for files and a `text` field for text content.
 - `GET /api/receive/:code`: Retrieves shared content based on the provided 4-digit code.
-- `GET /api/file/:id`:  Downloads a specific file from GridFS based on its ID.
+- `GET /api/file/:id`: Downloads a specific file from GridFS based on its ID.
 
 ## Environment Variables
 
 Create a `.env` file in the root directory of the project. Add the following variables:
 
-
-PORT=3000
-MONGODB_URI=<your_mongodb_connection_string>
-BASE_URL=http://localhost:3000 # URL of your application
-> Replace `<your_mongodb_connection_string>` with your actual MongoDB connection string.  Adjust `BASE_URL` if your application is hosted on a different domain or port.  The `PORT` variable determines the port on which the server will listen.
+> Replace `<your_mongodb_connection_string>` with your actual MongoDB connection string. Adjust `BASE_URL` if your application is hosted on a different domain or port. The `PORT` variable determines the port on which the server will listen.
 
 ## Contributing
 
@@ -92,16 +90,6 @@ We welcome contributions to ClipVault! If you'd like to contribute:
 3.  Make your changes and commit them with clear, concise messages.
 4.  Submit a pull request.
 
-Please ensure your code follows the project's coding standards and includes appropriate tests.
+> Please ensure your code follows the project's coding standards and includes appropriate tests.  Refer to the `CONTRIBUTING.md` file for detailed guidelines.
 
-## License & Credits
-
-ClipVault is licensed under the [MIT License](https://opensource.org/licenses/MIT).
-
-This project utilizes the following dependencies:
-
--   [Node.js](https://nodejs.org/)
--   [Express.js](https://expressjs.com/)
--   [MongoDB](https://www.mongodb.com/)
--   [Tailwind CSS](https://tailwindcss.com/)
--   [Multer](https://github.com/expressjs/multer)
+## License
