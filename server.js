@@ -41,6 +41,8 @@ client.connect()
     process.exit(1);
   });
   
+  
+
 // Serve frontend static files
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -96,6 +98,8 @@ app.post('/api/send', upload.array('file'), async (req, res) => {
     maxReceivers: receiverLimit,
     receiverCount: 0
   });
+  
+
 
   res.json({ success: true, message: 'Sent successfully!', code });
 });

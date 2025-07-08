@@ -231,3 +231,12 @@ function clearForm() {
   document.getElementById('expiryInput').value = '';
   document.getElementById('sendResult').classList.add('hidden');
 }
+
+function copyReceivedText() {
+  const text = document.getElementById('receivedText').innerText;
+  navigator.clipboard.writeText(text).then(() => {
+    showToast('Text copied to clipboard!');
+  }).catch(() => {
+    showToast('Failed to copy text', 'error');
+  });
+}
