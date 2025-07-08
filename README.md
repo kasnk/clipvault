@@ -106,8 +106,5 @@ This project utilizes the following dependencies:
 -   [Express.js](https://expressjs.com/)
 -   [MongoDB](https://www.mongodb.com/)
 -   [Tailwind CSS](https://tailwindcss.com/)
-<<<<<<< HEAD
 -   [Multer](https://github.com/expressjs/multer)
-=======
 -   [Multer](https://github.com/expressjs/multer)
->>>>>>> eb7e523 (Added Apache 2.0 License)
